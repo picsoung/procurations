@@ -98,7 +98,7 @@ async function match(requestEmail, offerEmail) {
   await redis.setAsync(`offers:confirmations:${token}`, offerEmail);
   var mail2Options = Object.assign({
     to: offerEmail,
-    subject: 'Quelque veut que vous preniez sa procuration !',
+    subject: 'Quelqu\'un veut que vous preniez sa procuration !',
     html: await request({
       url: config.mails.offerMatch,
       qs: {

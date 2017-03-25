@@ -33,6 +33,8 @@ router.post('/etape-1', wrap(async (req, res, next) => {
   await redis.setAsync(`requests:${token}`, req.body.email);
   await redis.setAsync(`requests:${req.body.email}:valid`, false);
 
+  console.log("TOKEN",token)
+
   var emailContent = await request({
     uri: config.mails.step1,
     qs: {
@@ -107,19 +109,12 @@ router.get('/etape-2', wrap(async (req,res) => {
 // Handle form, send emails to random people
 router.post('/etape-2', wrap(async (req, res) => {
   console.log("BODY",req.body);
-  if (!req.body.commune && !req.body.consulat)  { // one should be filled
+  if (!req.body.commune)  { // one should be filled
     req.session.errors = {};
     req.session.errors['commune'] = 'Ce champ ne peut être vide.';
 
     return res.redirect('/etape-2');
   }
-
-  // if (!req.body.commune)  { // req.body.commun should be commune code INSEE
-  //   req.session.errors = {};
-  //   req.session.errors['commune'] = 'Ce champ ne peut être vide.';
-  //
-  //   return res.redirect('/etape-2');
-  // }
 
   // Get commune zipcodes
   var ban = await request({

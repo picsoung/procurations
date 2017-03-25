@@ -43,7 +43,7 @@ app.use(session({
 
 app.use('/', require('./routes/requests'));
 app.use('/', require('./routes/offers'));
-app.use('/', require('./routes/polls'));
+app.use('/', require('./routes/liste-consulaire'));
 
 app.get('/confirmation', (req, res) => {
   return res.render('confirmation');

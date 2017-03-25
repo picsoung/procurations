@@ -11,15 +11,14 @@ block content
     p.lead.
       Vous avez déjà indiqué chercher une procuration pour #{commune}. Si vous souhaitez
       modifier votre ville, vous pouvez remplir ce formulaire à nouveau.
-  a(class='button' href='/step2-liste-consulaire') Je suis enregistré sur une liste consulaire.
-  form(action="/etape-2" method="POST")
+  form(action="/step2-liste-consulaire" method="POST")
     .form-group(class=errors && errors.commune ? "has-error" : "")
-      label Commune d'inscription sur les listes électorales
-      input#commune-input.form-control.input-block(type="text" name="commune" required)
+      label À quelle liste consulaire êtes-vous rattaché?
+      input#consulat-input.form-control.input-block(type="text" name="consulat" required)
       if errors && errors.commune
         span.help-block= errors.commune
       input.btn.btn-primary.btn-block(type="submit" value="Choisir")    
-
+  
   script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.min.js" integrity="sha256-HyBiZFJAMvxOhZoWOc5LWIWaN1gcFi8LjS75BZF4afg=" crossorigin="anonymous")
-  script(src="public/main.js")
+  script(src="public/consulatField.js")
