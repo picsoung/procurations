@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
   p.lead.
-    Merci&nbsp! Votre adresse email #{email} est bien confirmée.
+    Merci&nbsp;! Votre adresse email #{email} est bien confirmée.
   unless commune
     p.lead.
       Dernière étape&nbsp;: choisissez ci-dessous votre commune, nous essaierons
@@ -11,7 +11,7 @@ block content
     p.lead.
       Vous avez déjà indiqué chercher une procuration pour #{commune}. Si vous souhaitez
       modifier votre ville, vous pouvez remplir ce formulaire à nouveau.
-  a(class='button' href='/step2-liste-consulaire') Je suis enregistré sur une liste consulaire.
+  a(class='button' href='/step2-liste-consulaire') Je suis inscrit.e sur une liste consulaire.
   form(action="/etape-2" method="POST")
     .form-group(class=errors && errors.commune ? "has-error" : "")
       label Commune d'inscription sur les listes électorales

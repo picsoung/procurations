@@ -18,10 +18,9 @@ router.get('/step2-liste-consulaire', wrap(async (req,res) => {
 }));
 
 router.post('/step2-liste-consulaire', wrap(async (req,res) => {
-  console.log("BODY",req.body);
   if (!req.body.commune)  { // one should be filled
     req.session.errors = {};
-    req.session.errors['consulat'] = 'Ce champ ne peut être vide.';
+    req.session.errors['commune'] = 'Ce champ ne peut être vide.';
 
     return res.redirect('/step2-liste-consulaire');
   }

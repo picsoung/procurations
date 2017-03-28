@@ -1,8 +1,5 @@
 $(function() {
-
   var consulatSelectize = $('#consulat-input').selectize({
-    // load: function(query, callback) {},
-    // http://localhost:3000/public/bureaux_etranger.json
     load: function(query, callback) {
       if (!query.length) return callback();
       $.ajax({
@@ -16,12 +13,10 @@ $(function() {
               key: btoa(feature.country+"::"+feature.consulat)
             };
           });
-          console.log(list);
           return callback(list);
         }
       });
     },
-    // options:  getConsultatsArray(),
     render: {
        item: function(item, escape) {
            return '<div>' +
@@ -48,38 +43,4 @@ $(function() {
 
 function capitalize(str) {
   return str.toLowerCase().replace(/(^| )(\w)/g, s => s.toUpperCase())
-}
-
-function getConsultatsArray(){
-  return $.getJSON('/public/bureaux_etranger.json').then( function(data) {
-    console.log("data1",data)
-   return data.consulats;
-  }).then(function(consulats){
-   return consulats.map(function(feature) {
-     return {
-       country: capitalize(feature.country),
-       consulat: capitalize(feature.consulat),
-       key: btoa(feature.country+"::"+feature.consulat)
-     };
-   });
- }).then(function(data){
-   console.log("DAAATA",data);
-   return data
- })
-}
-
-function getArray(){
-  return [{
-		"country": "MADAGASCAR",
-		"consulat": "TANANARIVE",
-		"BUREAU": "Nosy Be"
-	}, {
-		"country": "MADAGASCAR",
-		"consulat": "TANANARIVE",
-		"BUREAU": "Sainte Marie"
-	}, {
-		"country": "MADAGASCAR",
-		"consulat": "TANANARIVE",
-		"BUREAU": "Consulat général Tananarive 1Consulat général Tananarive 2"
-	}]
 }

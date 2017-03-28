@@ -2,10 +2,10 @@ extends layout.pug
 
 block content
   p.lead.
-    Merci&nbsp! Votre adresse email #{email} est bien confirmée.
+    Merci&nbsp;! Votre adresse email #{email} est bien confirmée.
   unless commune
     p.lead.
-      Dernière étape&nbsp;: choisissez ci-dessous votre commune, nous essaierons
+      Dernière étape&nbsp;: choisissez ci-dessous la liste consulaire où vous êtes inscrits, nous essaierons
       de trouver quelqu'un pouvant prendre votre procuration.
   else
     p.lead.
@@ -14,7 +14,7 @@ block content
   form(action="/step2-liste-consulaire" method="POST")
     .form-group(class=errors && errors.commune ? "has-error" : "")
       label À quelle liste consulaire êtes-vous rattaché?
-      input#consulat-input.form-control.input-block(type="text" name="consulat" required)
+      input#consulat-input.form-control.input-block(type="text" name="commune" required)
       if errors && errors.commune
         span.help-block= errors.commune
       input.btn.btn-primary.btn-block(type="submit" value="Choisir")    

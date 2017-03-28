@@ -108,7 +108,6 @@ router.get('/etape-2', wrap(async (req,res) => {
 
 // Handle form, send emails to random people
 router.post('/etape-2', wrap(async (req, res) => {
-  console.log("BODY",req.body);
   if (!req.body.commune)  { // one should be filled
     req.session.errors = {};
     req.session.errors['commune'] = 'Ce champ ne peut être vide.';
